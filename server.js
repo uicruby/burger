@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
-var port = 3300;
+var port = process.env.PORT||3300;
 
 var app = express();
 
@@ -10,6 +10,12 @@ var app = express();
 app.use(express.static(process.cwd() + "/public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// for heroku
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("views"));
+}
+
 
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
@@ -29,5 +35,5 @@ app.use("/", routes);
 // app.listen(port);
 app.listen(port, function() {
     // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + port);
+    console.log(`Server listening on: http://localhost: ${PORT}`);
   });
