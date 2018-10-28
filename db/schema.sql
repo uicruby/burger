@@ -1,6 +1,6 @@
-CREATE DATABASE burgers_db;
+CREATE DATABASE nftzfv349vt5bfvl;
 
-USE burgers_db;
+USE nftzfv349vt5bfvl;
 
 CREATE TABLE burgerS (
 	id INT (10) AUTO_INCREMENT NOT NULL,
